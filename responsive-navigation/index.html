@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navigation Menu</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="navbar container">
+      <a class="logo" href="#home">My Website</a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#home" aria-current="location">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="menu-button" type="button" aria-label="Open menu"
+        aria-controls="mobile-menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <dialog class="drawer" id="mobile-menu" aria-labelledby="menu-title">
+    <div class="drawer-header">
+      <h2 id="menu-title">Menu</h2>
+      <button class="close-button" aria-label="Close menu" type="button" autofocus>&times;</button>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#home" aria-current="location">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </dialog>
+
+  <main class="container" id="main" tabindex="-1">
+    <section class="hero" id="home" tabindex="-1">
+      <h1>Welcome to my website</h1>
+      <p>A simple website with a responsive menu built using HTML, CSS, and JavaScript.</p>
+      <a class="button" href="#about">Learn more</a>
+    </section>
+
+    <section class="content-section" id="about" tabindex="-1">
+      <h2>About</h2>
+      <p>This project is a small example of how a website menu can work on both desktop and mobile without a framework.</p>
+    </section>
+
+    <section class="content-section" id="services" tabindex="-1">
+      <h2>Services</h2>
+      <p>Here are a few examples of what this site could offer.</p>
+      <ul>
+        <li>Website design</li>
+        <li>Frontend development</li>
+        <li>Website maintenance</li>
+      </ul>
+    </section>
+
+    <section class="content-section" id="contact" tabindex="-1">
+      <h2>Contact</h2>
+      <p>This is a sample contact section. Add your own email address or contact form here.</p>
+      <a class="button" href="#home">Back to top</a>
+    </section>
+  </main>
+</body>
+</html>

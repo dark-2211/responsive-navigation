@@ -1,0 +1,246 @@
+:root {
+  --blue: #2359ad;
+  --dark-blue: #184589;
+  --border: #dce3ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f9;
+  color: #202c3b;
+  font: 16px/1.6 system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: .5rem;
+  left: .5rem;
+  z-index: 3;
+  padding: .5rem 1rem;
+  background: white;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.container {
+  width: min(940px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  color: var(--blue);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.desktop-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+}
+
+nav a,
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .45rem .85rem;
+  border-radius: 6px;
+  font-weight: 550;
+  transition: background-color .2s, color .2s, transform .2s;
+}
+
+nav a:hover,
+nav a[aria-current="location"] {
+  background: #e7effd;
+  color: var(--dark-blue);
+}
+
+nav a:active,
+.button:active {
+  transform: scale(.96);
+}
+
+.button {
+  background: var(--blue);
+  color: white;
+}
+
+.button:hover {
+  background: var(--dark-blue);
+}
+
+.menu-button,
+.close-button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: white;
+  color: var(--dark-blue);
+  transition: background-color .2s;
+}
+
+.menu-button:hover,
+.close-button:hover {
+  background: #e7effd;
+}
+
+.menu-button {
+  display: none;
+}
+
+.menu-button span {
+  display: block;
+  width: 19px;
+  height: 2px;
+  margin: 4px auto;
+  background: currentColor;
+}
+
+.drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: min(290px, 85vw);
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  padding: 1.25rem;
+  border: 0;
+  background: white;
+  color: inherit;
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  overscroll-behavior: contain;
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.drawer::backdrop {
+  background: rgb(16 32 55 / 0);
+  transition: background-color .25s ease;
+}
+
+.drawer.open::backdrop {
+  background: rgb(16 32 55 / .42);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-header h2 {
+  margin: 0;
+}
+
+.close-button {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.mobile-nav {
+  display: grid;
+  gap: .3rem;
+  margin-top: 1rem;
+}
+
+main {
+  padding-block: 2rem;
+}
+
+section {
+  scroll-margin-top: 88px;
+  margin-bottom: 1rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.hero {
+  background: #eaf1fb;
+}
+
+h1, h2 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 5vw, 3rem);
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 62ch;
+}
+
+.content-section p:last-child,
+.content-section ul:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 759px) {
+  .js .desktop-nav { display: none; }
+  .js .menu-button { display: block; }
+  html:not(.js) .navbar { flex-wrap: wrap; padding-block: .5rem; }
+  main { padding-block: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::backdrop { transition-duration: 0s !important; }
+}
